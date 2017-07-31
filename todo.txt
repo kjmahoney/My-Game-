@@ -1,0 +1,5 @@
+
+
+Notes:
+
+knight character moves slower comapred to others
