@@ -3,3 +3,5 @@
 Notes:
 
 knight character moves slower comapred to others
+Shield wall. If out of vertices and cadence with npcs then lose
+ice level, remove return to velocity=0, so slide around
