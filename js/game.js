@@ -12,15 +12,16 @@ function preload() {
 function create() {
   this.player = this.add.sprite(this.game.width / 2, this.game.height - 300, 'knight');
   this.player.anchor.setTo(0.5, 0.5);
+  this.physics.enable(this.player, Phaser.Physics.ARCADE);
+  this.player.body.collideWorldBounds = true;
   this.player.animations.add('spear-up', [9], 20, true);
   this.player.animations.add('spear-left', [58], 20, true);
   this.player.animations.add('spear-down', [107], 20, true);
   this.player.animations.add('spear-right', [156], 20, true);
   this.player.animations.add('bow-front', [0], 20, true);
-  this.player.play('spear-front');
 
   this.physics.enable(this.player, Phaser.Physics.ARCADE);
-  this.player.speed = 200;
+  this.player.speed = 150;
   setMovementAnimations(this.player);
   this.cursors = this.input.keyboard.createCursorKeys();
   console.log(this.cursors);

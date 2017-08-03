@@ -5,6 +5,8 @@ const setMovementAnimations = function(player) {
   player.animations.add('walk-right', [149,150], 20, true);
 }
 
+//28 29
+
 const moveUp = function(player, cursors){
     player.body.velocity.y = -player.speed
     player.play(`walk-up`, 5)
