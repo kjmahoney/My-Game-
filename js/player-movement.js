@@ -5,7 +5,8 @@ const setMovementAnimations = function(player) {
   player.animations.add('walk-right', [149,150], 20, true);
 }
 
-//28 29
+//potential spear shuffle could be used as equip unequip
+// player.animations.add('walk-left', [58,76], 20, true);
 
 const moveUp = function(player, cursors){
     player.body.velocity.y = -player.speed
@@ -14,7 +15,7 @@ const moveUp = function(player, cursors){
 
 const moveDown = function(player){
     player.body.velocity.y = player.speed
-    player.play('walk-down', 5);
+    player.play('walk-down', 5)
 }
 
 const moveRight = function(player){
@@ -27,9 +28,9 @@ const moveLeft = function(player){
     player.play('walk-left', 5)
 }
 //Should probably move to a preset page
-let direction = 'up'
+let playerDirection = 'up'
 
-const playerMovement = function(cursors, player) {
+const playerMovement = function(cursors, player, attackKey) {
   return new Promise((resolve, reject) => {
 
     player.body.velocity.y = 0;
@@ -37,33 +38,33 @@ const playerMovement = function(cursors, player) {
 
     if (cursors.up.isDown) {
       moveUp(player)
-      direction = 'up'
+      playerDirection = 'up'
     }
 
     if (cursors.down.isDown) {
       moveDown(player)
-      direction = 'down'
+      playerDirection = 'down'
     }
 
     if (cursors.left.isDown) {
       moveLeft(player)
-      direction = 'left'
+      playerDirection = 'left'
     }
 
     if (cursors.right.isDown) {
       moveRight(player)
-      direction = 'right'
+      playerDirection = 'right'
     }
 
-    if (cursors.up.isUp &&
+    if (attackKey.isUp &&
+        cursors.up.isUp &&
         cursors.down.isUp &&
         cursors.right.isUp &&
         cursors.left.isUp) {
-          resolve(direction, player);
+          resolve(playerDirection, player);
         }
-  }).then((direction) => {
-    player.play(`spear-${direction}`)
+  }).then((playerDirection) => {
+    // player.play(`spear-${playerdirection}`)
+    player.animations.stop();
   })
 }
-//weapons function, name weapon and direction and gives where he faces
-//change all forwards ups etc to one convention
